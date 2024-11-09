@@ -1,294 +1,313 @@
-\documentclass[letterpaper,11pt]{article}
+<!DOCTYPE html>
+<html lang="en">
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
-\usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
-\usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage[english]{babel}
-\usepackage{tabularx}
-\usepackage{fontawesome5}
-\usepackage{multicol}
-\setlength{\multicolsep}{-3.0pt}
-\setlength{\columnsep}{-1pt}
-\input{glyphtounicode}
-\usepackage{fontawesome5}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafik Shah - Resume</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0e0e0e;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
 
+        header {
+            background-color: #1a1a1a;
+            padding: 30px 20px;
+            text-align: center;
+            color: #03a9f4;
+        }
 
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
+        header h1 {
+            font-size: 32px;
+            margin: 0;
+            color: #ffffff;
+        }
 
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
+        header p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #cccccc;
+        }
 
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 14px;
+        }
 
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.6in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.19in}
-\addtolength{\topmargin}{-.7in}
-\addtolength{\textheight}{1.4in}
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-\urlstyle{same}
+        .contact-info li i {
+            color: #03a9f4;
+        }
 
-\raggedbottom
-\raggedright
-\setlength{\tabcolsep}{0in}
+        .contact-info a {
+            color: #03a9f4;
+            text-decoration: none;
+        }
 
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+        .container {
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
+            gap: 20px;
+        }
 
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+        .left-column,
+        .right-column {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+        }
 
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-	{#1 \vspace{-2pt}}
-  }
-}
+        .left-column {
+            margin-bottom: 20px;
+        }
 
-\newcommand{\classesList}[4]{
-	\item\small{
-    	{#1 #2 #3 #4 \vspace{-2pt}}
-  }
-}
+        .left-column,
+        .right-column {
+            width: 100%;
+        }
 
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-	\begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-  	\textbf{#1} & \textbf{\small #2} \\
-  	\textit{\small#3} & \textit{\small #4} \\
-	\end{tabular*}\vspace{-7pt}
-}
+        h2 {
+            border-bottom: 2px solid #03a9f4;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
 
-\newcommand{\resumeSubSubheading}[2]{
-	\item
-	\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-  	\textit{\small#1} & \textit{\small #2} \\
-	\end{tabular*}\vspace{-7pt}
-}
+        .experience-item,
+        .education-item,
+        .project-item,
+        .skills-item,
+        .certification-item {
+            margin-bottom: 20px;
+        }
 
-\newcommand{\resumeProjectHeading}[2]{
-	\item
-	\begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
-  	\small#1 & \textbf{\small #4}\\
-	\end{tabular*}\vspace{-7pt}
-}
+        .experience-item h3,
+        .education-item h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #03a9f4;
+        }
 
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+        .experience-item p,
+        .education-item p,
+        .project-item p {
+            margin: 5px 0;
+            color: #cccccc;
+        }
 
-\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+        ul li {
+            margin-bottom: 10px;
+        }
 
-%-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #1a1a1a;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #cccccc;
+        }
 
+        @media (min-width: 600px) {
+            .container {
+                flex-direction: row;
+                gap: 20px;
+            }
 
-\begin{document}
+            .left-column,
+            .right-column {
+                flex: 1;
+                min-width: 300px;
+            }
 
-%----------HEADING----------
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
-%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
-% \end{tabular*}
-\begin{center}
-	{\Huge \scshape Tanishq Farkya} \\ \vspace{1pt}
-	   Shamgarh , Madhya Pradesh \\ \vspace{1pt}
-	\small \raisebox{-0.1\height}\faPhone\ +919981782320 ~ \href{mailto:Manifarkya0@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{Manifarkya0@gmail.com}} ~
-	\href{https://www.linkedin.com/in/muhammad-rafik-179875209/}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/Muhammed-rafik}}
-	\vspace{-8pt}
-\end{center}
+            header h1 {
+                font-size: 42px;
+            }
 
+            header p {
+                font-size: 18px;
+            }
 
+            .contact-info ul {
+                flex-direction: row;
+                gap: 15px;
+                font-size: 16px;
+            }
 
-%-----------EDUCATION-----------
-\section{Education}
-  \resumeSubHeadingListStart
-	\resumeSubheading
-  	{Mukesh patel school of technology management and engineering}{2022-2026}
-  	{Bachelor of Technology in Artificial Intelligence and Machine Learning(CGPA of 3.39/4)}{Shirpur , Maharastra}
-   \resumeSubHeadingListEnd
+            h2 {
+                font-size: 28px;
+            }
 
-%-----------PROJECTS-----------
-\section{Projects}
-	\vspace{-5pt}
-	\resumeSubHeadingListStart
-	\resumeProjectHeading
-      	{\textbf{Movie Recommendation System } $|$ \href{https://github.com/}{\faIcon{github}} $|$ \emph{python,machine learning }  {}}{}
-      	\resumeItemListStart
-        	\resumeItem{Developed User Authentication and Profile Management}
-        	\resumeItem{reated a movie recommendation system in Python utilizing content-based filtering with TF-IDF to enhance recommendation accuracy based on movie features.
-}
-            \resumeItem{Designed responsive interfaces for seamless user experience across devices.}
-            
-      	\resumeItemListEnd
-	\vspace{-13pt}
-  	\resumeProjectHeading
-      	{\textbf{Multi-Language Text Summarizer} $|$ \href{https://github.com/}{\faIcon{github}} $|$ \emph{python}  $ {}}{}
-      	\resumeItemListStart
-        	\resumeItem{Python-based tool developed using NLTK designed to efficiently summarize text in multiple languages, including English, Marathi, and Mixed-Language (English, Marathi, and Hindi) with multiple reduction modes.
+            .experience-item h3,
+            .education-item h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
 
+<body>
+    <header>
+        <h1>Rafik Shah</h1>
+        <p>AI, Data Science, and Machine Learning Enthusiast committed to driving innovation and delivering impactful solutions.</p>
+        <div class="contact-info">
+            <ul>
+                <li><i class="fas fa-phone-alt"></i>7028352298</li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:rafikshah3262@gmail.com">rafikshah3262@gmail.com</a></li>
+                <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rafik-shah-179875209/" target="_blank">LinkedIn</a></li>
+                <li><i class="fab fa-github"></i> <a href="https://github.com/RAFIKSHA" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </header>
 
-}}
-            
-      	\resumeItemListEnd
-	\resumeSubHeadingListEnd
-\vspace{-15pt}
+    <div class="container">
+        <div class="left-column">
+            <section id="experience">
+                <h2>Experience</h2>
+                <div class="experience-item">
+                    <h3>Python Developer and Trainer</h3>
+                    <p><strong>Campus Credentials Pvt. Ltd. (Oct 2023 - Present)</strong></p>
+                    <ul>
+                        <li>Designed engaging lessons and hands-on activities for Python training.</li>
+                        <li>Monitored student progress through quizzes and projects, providing feedback for improvement.</li>
+                        <li>Kept up-to-date with Python developments to ensure relevant teaching content.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Data Science and analysis virtual internship Internship</h3>
+                    <p><strong>Netzwerk Academy (April 2023 - Sep 2023)</strong></p>
+                    <ul>
+                        <li>Completed a 24-week AI-ML Virtual Internship with an Excellent grade.</li>
+                        <li>Proficient in Mathematics, Python, and various data science libraries; skilled in Machine Learning techniques and SQL.</li>
+                        <li>Worked on image classification and object detection projects.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Developer virtual experience program</h3>
+                    <p><strong>Accenture (may 2022 -sep 2022)</strong></p>
+                    <ul>
+                        <li>Completed a Developer Virtual Experience Program where I worked on industry-relevant projects, simulating real-world scenarios.        </li>
+                         <li>Gained practical experience in software development, including coding, debugging, and testing applications.</li>
+                
+                        <li>Developed a Movie Recommendation System as an internship project.</li>
+                    </ul>
+                </div>
+            </section>
 
-%
-%-----------PROGRAMMING SKILLS-----------
-\section{Technical Skills }
- \begin{itemize}[leftmargin=0.15in, label={}]
-	\small{\item{
- 	\textbf{Languages}{: C/C++, Python, SQL ,word,excel} \\
- 	\textbf{Technologies/Frameworks/Libraries}{: Data analytics-powerbi,numpy,pandas,matplotlib}\\
-  \textbf{Version Control system-git and github
-	}}
- \end{itemize}
- \vspace{-16pt}
+            <section id="education">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>M-Tech Information Technology</h3>
+                    <p><strong>Savitribai Phule Pune University (2024-pursuing)</strong></p>
+                    <p><strong>Siddhant College of Engineering, Pune</strong></p>
+                </div>
 
-\section{Experience }
-  \resumeSubHeadingListStart
-	\resumeSubheading
-  	{1)) }{}
-  	
-     
-	\resumeItemListEnd
+                <div class="education-item">
+                    <h3>B-Tech Computer Science and Engineering</h3>
+                    <p><strong>Dr. Babasaheb Ambedkar Technological University (2021-2024)</strong></p>
+                    <p><strong>CSMSS Chh. Shahu College of Engineering, Aurangabad</strong></p>
+                    <p>CGPA: 8.5</p>
+                </div>
 
- \resumeSubheading
-  	{}{}
-  	{}{}
-  	\resumeItemListStart
-    	\resumeItem{
- }
+                <div class="education-item">
+                    <h3>SSC</h3>
+                    <p><strong>Swami Vivekanand Vidyalaya, Bhokardan</strong></p>
+                    <p><strong>State board of maharashtra (2017-2018)</strong></p>
+                    <p>Percentage Score:93.40%</p>
+                    <p>Completion Year: 2018</p>
+                </div>
+            </section>
+        </div>
 
+        <div class="right-column">
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="project-item">
+                    <h3><strong>Movie Recommendation System</strong></h3>
+                    <p>Created a movie recommendation system in Python utilizing content-based filtering with TF-IDF to enhance recommendation accuracy based on movie features.</p>
+                <!--<p><a href="https://satyajeet1718.github.io/Portfolio/movie_recommendation.html" target="_blank">Link</a></p>-->
+                </div>
+                <div class="project-item">
+                    <h3><strong>Multi-Language Text Summarizer</strong></h3>
+                    <p>Python-based tool developed using NLTK designed to efficiently summarize text in multiple languages, including English, Marathi, and Mixed-Language (English, Marathi, and Hindi) with multiple reduction modes.</p>
+                   <!-- <p><a href="https://satyajeet1718.github.io/Portfolio/Multi-language_text_summerizer.html" target="_blank">Link</a></p>-->
+                </div>
+                <div class="project-item">
+                    <h3><strong>Real-Time Cryptocurrency Analyzer Website</strong></h3>
+                    <p>Developed a website for real-time cryptocurrency analysis as part of a group project. Collaborated with a team to incorporate features for trend visualization, current news, live price updates, and market insights.</p>
+                </div>
+            </section>
 
-     
-	\resumeItemListEnd
+            <section id="certifications">
+                <h2>Certified Courses</h2>
+                <ul>
+                    <li>Python (Beginner, Intermediate, Core)</li>
+                    <li>AI with Python</li>
+                    <li>TensorFlow Python</li>
+                    <li>Statistics for Data Science</li>
+                    <li>Data Visualization using Python</li>
+                    <li>Product Management</li>
+                    <li>Leadership and Management</li>
+                </ul>
+            </section>
+
+            <section id="skills">
+                <h2>Skills and Abilities</h2>
+                <ul>
+                    <li>Python Programming: Core java,Java-Script</li>
+                    <li>Data Structures and Algorithms (DSA)</li>
+                    <li>Database: MySQL,MongoDB</li>
+                    <li>Data Science and Data analytics : numpy,pandas,Matplotlib,seaborn,Scikit-learn,Excel,Powerbi</li>
+                    <li>Front end : Html,Css,React</li>
+                    <li>Back end :Django</li>
+                    <li>Version Control:Git</li>
+                    <li>Server and Deployment: Docker,AWS</li>
+                    <li>Leadershi,Communication,Team Collaboration,Adaptability</li>
     
-  \resumeSubHeadingListEnd
-\vspace{-16pt}
-%-----------EXPERIENCE-----------
-\section{Achievements}
-  \resumeSubHeadingListStart
-	
+                </ul>
+            </section>
 
- \resumeSubheading
-  	{}{}
-  	{}{}
-  	\resumeItemListStart
-    	\resumeItem. }
+            <section id="languages">
+                <h2>Languages</h2>
+                <ul>
+                    <li>Proficient in English, Hindi, Marathi</li>
+                </ul>
+            </section>
+        </div>
+    </div>
 
+    <footer>
+        <p>©2024 Rafik Shah. All rights reserved.</p>
+    </footer>
 
-     
-	\resumeItemListEnd
-    
-  \resumeSubHeadingListEnd
-\vspace{-16pt}
+</body>
 
-
-%-----------Achievements-----------
-% \section{Achievements [Add all kind of achievements that shows your skills]}
-%  \begin{itemize}[leftmargin=0.15in, label={}]
-% 	\resumeItemListStart
-%     	\resumeItem{ }
-%     	\resumeItem{}
-%     	\resumeItem{}
-%     	\resumeItem{}
-%     	\resumeItem{}
-%     	\resumeItem{}
-%     	\resumeItem{ }
-%   	\resumeItemListEnd
-%  \end{itemize}
-%  \vspace{-16pt}
- 
-%  %
-
-
-%-----------Profile Links-----------
-\section{Profile Links}
- \begin{itemize}[leftmargin=0.15in, label={}]
-	\resumeItemListStart
-    	\resumeItem {\href{}
-     {Codechef- Brown Badge}}
-    	
-    	\resumeItem {\href{}}
-    	\resumeItem {\href{}}
-  	\resumeItemListEnd
- \end{itemize}
- \vspace{-16pt}
-
-% %
-% %
-
-
-%-----------CERTIFICATIONS-----------
-
-\section{Certifications}
- \begin{itemize}[leftmargin=0.15in, label={}]
-	\resumeItemListStart
-                \resumeItem
-% {\href{]
-     { python Programming-Udemy Certification 
-     }}
-    	\resumeItem 
-    % {\href{}
-     {}}
-    	\resumeItem
-% {\href{}
-     {}}
-
-     \resumeItem
-% {\href{}
-     {
-     }}
-      \resumeItem
-% {\href{}
-     { 
-     }}
-  	\resumeItemListEnd
- \end{itemize}
- \vspace{-16pt}
-
-
-% %-----------HOBBIES-----------
-
-% \section{Hobbies}
-%  \begin{itemize}[leftmargin=0.15in, label={}]
-% 	\resumeItemListStart
-%     	\resumeItem 
-%      {Solving coding problems}
-%      \resumeItem
-%      {swimming}
-%     	\resumeItem
-%      {YouTube-850+ subscriber}
-%   	\resumeItemListEnd
-%  \end{itemize}
-%  \vspace{-16pt}
-
-
-\end{document}
+</html>
